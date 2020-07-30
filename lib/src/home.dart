@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'search_card.dart';
+import 'api.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -68,15 +68,9 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(height: 20.0),
           FloatingActionButton(
-            onPressed: () {
-              return showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    content: query(myController.text),
-                  );
-                },
-              );
+            onPressed: () async {
+              await init(myController.text);
+              Navigator.pushNamed(context, '/query');
             },
             tooltip: 'Search',
             child: Icon(Icons.search),
