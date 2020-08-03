@@ -158,7 +158,7 @@ class Query extends StatelessWidget {
                   height: 25.0,
                 ),
                 Text(
-                  'Recently Updated Repositories',
+                  'Some Repositories',
                   style: TextStyle(
                     color: Colors.grey,
                     letterSpacing: 2.0,
@@ -167,40 +167,37 @@ class Query extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                // ----- TO DO -----
-                // get repos information from API
-                Row(
+                Column(
                   children: <Widget>[
                     OutlineButton(
                       onPressed: () async {
-                        await launch('https://github.com');
+                        await launch(repos[0].url);
                       },
-                      child: Text('repo 1'),
+                      child: Text(repos[0].name),
                       textColor: Colors.amberAccent[200],
                     ),
                     SizedBox(
-                      width: 15.0,
+                      height: 10.0,
                     ),
                     OutlineButton(
                       onPressed: () async {
-                        await launch('https://github.com');
+                        await launch(repos[1].url);
                       },
-                      child: Text('repo 2'),
+                      child: Text(repos[1].name),
                       textColor: Colors.amberAccent[200],
                     ),
                     SizedBox(
-                      width: 15.0,
+                      height: 10.0,
                     ),
                     OutlineButton(
                       onPressed: () async {
-                        await launch('https://github.com');
+                        await launch(repos[2].url);
                       },
-                      child: Text('repo 3'),
+                      child: Text(repos[2].name),
                       textColor: Colors.amberAccent[200],
                     ),
                   ],
                 ),
-                // ----- TO DO -----
                 SizedBox(
                   height: 30.0,
                 ),

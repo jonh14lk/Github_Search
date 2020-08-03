@@ -70,7 +70,11 @@ class _HomeState extends State<Home> {
           FloatingActionButton(
             onPressed: () async {
               await init(myController.text);
-              Navigator.pushNamed(context, '/query');
+              if (find == true) {
+                Navigator.pushNamed(context, '/query');
+              } else {
+                Navigator.pushNamed(context, '/error');
+              }
             },
             tooltip: 'Search',
             child: Icon(Icons.search),
