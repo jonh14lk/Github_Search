@@ -9,7 +9,7 @@ class ErrorScreen extends StatelessWidget {
         child: Text(
           'User not found ;-;',
           style: TextStyle(
-            color: Colors.grey,
+            color: Colors.white,
             letterSpacing: 2.0,
           ),
         ),

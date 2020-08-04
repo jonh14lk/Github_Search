@@ -57,7 +57,7 @@ class Profile {
     this.repos,
   });
   factory Profile.fromJson(Map<String, dynamic> json) {
-    return Profile(
+    Profile ret = Profile(
       login: json['login'] as String,
       name: json['name'] as String,
       pic: json['avatar_url'] as String,
@@ -67,6 +67,8 @@ class Profile {
       followers: json['followers'] as int,
       repos: json['public_repos'] as int,
     );
+    ret.reposUrl = ret.reposUrl + '?sort=updated';
+    return ret;
   }
 }
 

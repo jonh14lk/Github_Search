@@ -28,7 +28,7 @@ class Query extends StatelessWidget {
                 Text(
                   'Name',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     letterSpacing: 2.0,
                   ),
                 ),
@@ -50,7 +50,7 @@ class Query extends StatelessWidget {
                 Text(
                   'Username',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     letterSpacing: 2.0,
                   ),
                 ),
@@ -72,7 +72,7 @@ class Query extends StatelessWidget {
                 Text(
                   'Location',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     letterSpacing: 2.0,
                   ),
                 ),
@@ -94,7 +94,7 @@ class Query extends StatelessWidget {
                 Text(
                   'Followers',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     letterSpacing: 2.0,
                   ),
                 ),
@@ -116,7 +116,7 @@ class Query extends StatelessWidget {
                 Text(
                   'Following',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     letterSpacing: 2.0,
                   ),
                 ),
@@ -138,7 +138,7 @@ class Query extends StatelessWidget {
                 Text(
                   'Repos',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     letterSpacing: 2.0,
                   ),
                 ),
@@ -158,9 +158,9 @@ class Query extends StatelessWidget {
                   height: 25.0,
                 ),
                 Text(
-                  'Some Repositories',
+                  'Recently Updated Repositories',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     letterSpacing: 2.0,
                   ),
                 ),
