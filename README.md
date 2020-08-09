@@ -17,3 +17,4 @@ It will run the app on the first device it recognizes, an phone or emulator.
 # Sources
 
 1-[Github API Docs](https://docs.github.com/en/rest/reference/users)
+2-[Website used to create the logo](https://www.designevo.com/logo-maker)
