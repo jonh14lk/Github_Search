@@ -23,10 +23,12 @@ Future fetchUser(user) async {
   String st = res.body;
   final jsonResponse = json.decode(st);
   profile = new Profile.fromJson(jsonResponse);
-  if (profile.name == null) {
+  print(profile.login);
+  if (profile.login == null) {
     find = false;
   } else {
     await fetchRepos(profile.reposUrl);
+    complete();
   }
 }
 
@@ -69,6 +71,19 @@ class Profile {
     );
     ret.reposUrl = ret.reposUrl + '?sort=updated';
     return ret;
+  }
+}
+
+void complete() {
+  // complete the data that is equal to "null, if exists"
+  if (profile.name == null) profile.name = "Unavailable";
+  if (profile.location == null) profile.location = "Unavailable";
+  while (repos.length < 3) {
+    // treating the case of the user having less than 3 repositories
+    repos.add(Repo(
+      name: 'Unavailable',
+      url: 'https://github.com',
+    ));
   }
 }
 
