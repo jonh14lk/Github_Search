@@ -96,11 +96,3 @@ Future init(String user) async {
   username = user;
   await fetchUser(user);
 }
-
-// TO DO: error
-/*
-"message":"API rate limit exceeded for 187.65.7.23. 
-(But here's the good news: Authenticated requests get a higher rate limit. 
-Check out the documentation for more details.)","documentation_url":
-"https://developer.github.com/v3/#rate-limiting"
-*/
