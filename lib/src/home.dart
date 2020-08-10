@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
       body: ListView(
         padding: EdgeInsets.only(left: 20.0),
         children: <Widget>[
-          SizedBox(height: 20.0),
+          SizedBox(height: 50.0),
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: Text(
@@ -73,10 +73,12 @@ class _HomeState extends State<Home> {
               FloatingActionButton(
                 onPressed: () async {
                   await init(myController.text);
-                  if (find == true) {
+                  if (find == 0) {
+                    Navigator.pushNamed(context, '/error');
+                  } else if (find == 1) {
                     Navigator.pushNamed(context, '/query');
                   } else {
-                    Navigator.pushNamed(context, '/error');
+                    Navigator.pushNamed(context, '/apilimit');
                   }
                 },
                 tooltip: 'Search',

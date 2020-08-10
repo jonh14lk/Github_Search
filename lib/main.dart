@@ -3,6 +3,7 @@ import 'src/home.dart';
 import 'src/theme.dart';
 import 'src/queryresult.dart';
 import 'src/errorscreen.dart';
+import 'src/apilimiterror.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,6 +13,7 @@ void main() {
       '/': (context) => Home(),
       '/query': (context) => Query(),
       '/error': (context) => ErrorScreen(),
+      '/apilimit': (context) => ApiLimitError(),
     },
   ));
 }

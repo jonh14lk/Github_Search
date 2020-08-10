@@ -1,34 +1,39 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 List<Repo> repos = [];
 Profile profile;
-bool find;
+int find;
+String username;
 
 List<Repo> parseRepos(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-  return repos = parsed.map<Repo>((json) => Repo.fromJson(json)).toList();
+  return parsed.map<Repo>((json) => Repo.fromJson(json)).toList();
 }
 
 Future<List<Repo>> fetchRepos(String url) async {
   final res = await http.get(url);
   String st = res.body;
-  return compute(parseRepos, st);
+  return repos = parseRepos(st);
 }
 
 Future fetchUser(user) async {
   final res = await http.get('https://api.github.com/users/' + user);
   String st = res.body;
   final jsonResponse = json.decode(st);
-  profile = new Profile.fromJson(jsonResponse);
-  print(profile.login);
-  if (profile.login == null) {
-    find = false;
-  } else {
+  if (jsonResponse['message'] == 'Not Found') {
+    // user not found
+    find = 0;
+  } else if (jsonResponse['message'] == null) {
+    // user found successfully
+    find = 1;
+    profile = new Profile.fromJson(jsonResponse);
     await fetchRepos(profile.reposUrl);
     complete();
+  } else {
+    // API rate limit exceeded
+    find = 2;
   }
 }
 
@@ -38,9 +43,9 @@ class Repo {
   factory Repo.fromJson(Map<String, dynamic> json) {
     Repo ret = Repo(
       name: json['name'] as String,
-      url: '',
+      url: 'https://github.com/',
     );
-    ret.url = 'https://github.com/' + profile.login + '/' + ret.name;
+    ret.url = ret.url + username + '/' + ret.name;
     return ret;
   }
 }
@@ -88,6 +93,14 @@ void complete() {
 }
 
 Future init(String user) async {
-  find = true;
+  username = user;
   await fetchUser(user);
 }
+
+// TO DO: error
+/*
+"message":"API rate limit exceeded for 187.65.7.23. 
+(But here's the good news: Authenticated requests get a higher rate limit. 
+Check out the documentation for more details.)","documentation_url":
+"https://developer.github.com/v3/#rate-limiting"
+*/
